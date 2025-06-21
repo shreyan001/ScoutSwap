@@ -1,5 +1,44 @@
+/* THIS FILE IS NOT USED BY THE EXTENSION */
+/* The active CSS file is content.css */
+/* This file exists for reference only */
+
+/* Import Geist font */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+
 /* Jupiter Social Trader - Enhanced Content Script Styles */
-/* Modern Google Lens-style UI with smooth animations */
+/* Modern shadcn/ui + Vercel Style with sharp borders and zero radius */
+
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 9% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0;
+}
+
+/* NOTE: This file is NOT loaded by the extension */
+/* Only content.css is used - see manifest.json */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* === MAIN OVERLAY === */
 .jupiter-overlay {
@@ -9,7 +48,7 @@
   width: 100vw !important;
   height: 100vh !important;
   z-index: 2147483647 !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   pointer-events: none !important;
   animation: jupiterOverlayFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
@@ -30,13 +69,11 @@
   position: absolute !important;
   width: 420px !important;
   max-height: 600px !important;
-  background: #ffffff !important;
-  border-radius: 20px !important;
-  box-shadow: 
-    0 24px 48px rgba(0, 0, 0, 0.15),
-    0 12px 24px rgba(0, 0, 0, 0.1),
-    0 6px 12px rgba(0, 0, 0, 0.05),
-    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
   overflow: hidden !important;
   pointer-events: all !important;
   animation: jupiterContentSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -89,33 +126,24 @@
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 20px 24px 16px 24px !important;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  position: relative !important;
-}
-
-.jupiter-header::after {
-  content: '' !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 1px !important;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important;
+  padding: 16px 20px !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;  border-bottom: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
 }
 
 .jupiter-logo {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  color: #ffffff !important;
+  gap: 8px !important;
+  color: hsl(var(--primary)) !important;
   font-weight: 600 !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
 }
 
 .jupiter-logo-icon {
-  font-size: 24px !important;
-  animation: jupiterLogoRotate 2s ease-in-out infinite alternate !important;
+  font-size: 20px !important;
+  color: hsl(var(--primary)) !important;
 }
 
 @keyframes jupiterLogoRotate {
@@ -135,7 +163,7 @@
 .jupiter-btn-icon {
   width: 32px !important;
   height: 32px !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   background: rgba(255, 255, 255, 0.15) !important;
   border: none !important;
   color: #ffffff !important;
@@ -227,7 +255,7 @@
 .jupiter-sentiment-analysis {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
   border: 1px solid #e2e8f0 !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius) !important;
   padding: 20px !important;
   margin-bottom: 24px !important;
 }
@@ -248,7 +276,7 @@
 
 .jupiter-sentiment-badge {
   padding: 8px 16px !important;
-  border-radius: 20px !important;
+  border-radius: var(--radius) !important;
   font-size: 13px !important;
   font-weight: 600 !important;
   display: flex !important;
@@ -292,14 +320,14 @@
   width: 100% !important;
   height: 8px !important;
   background: #e5e7eb !important;
-  border-radius: 4px !important;
+  border-radius: var(--radius) !important;
   overflow: hidden !important;
 }
 
 .jupiter-progress-fill {
   height: 100% !important;
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
-  border-radius: 4px !important;
+  border-radius: var(--radius) !important;
   transition: width 0.8s ease-out !important;
   animation: jupiterProgressFill 0.8s ease-out !important;
 }
@@ -328,7 +356,7 @@
 .jupiter-token-card {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius) !important;
   padding: 20px !important;
   transition: all 0.3s ease !important;
   position: relative !important;
@@ -383,7 +411,7 @@
 .jupiter-btn-sm {
   padding: 6px 12px !important;
   font-size: 12px !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   border: 1px solid #e5e7eb !important;
   background: #ffffff !important;
   color: #374151 !important;
@@ -419,7 +447,7 @@
   margin-bottom: 20px !important;
   padding: 20px !important;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
   border: 1px solid #e2e8f0 !important;
 }
 
@@ -454,7 +482,7 @@
   align-items: center !important;
   padding: 12px 16px !important;
   background: #f9fafb !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   border: 1px solid #f3f4f6 !important;
 }
 
@@ -474,65 +502,55 @@
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace !important;
   background: #f3f4f6 !important;
   padding: 4px 8px !important;
-  border-radius: 6px !important;
+  border-radius: var(--radius) !important;
   font-size: 12px !important;
 }
 
 /* === BUTTONS === */
 .jupiter-btn {
-  padding: 12px 20px !important;
-  border-radius: 10px !important;
-  font-weight: 600 !important;
-  font-size: 14px !important;
-  cursor: pointer !important;
-  border: none !important;
-  transition: all 0.2s ease !important;
-  position: relative !important;
-  overflow: hidden !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  border: 1px solid transparent !important;
+  padding: 8px 12px !important;
   text-decoration: none !important;
+  font-family: inherit !important;
+  white-space: nowrap !important;
 }
 
-.jupiter-btn:before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: -100% !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
-  transition: left 0.5s ease !important;
+.jupiter-btn:hover {
+  opacity: 0.9 !important;
 }
 
-.jupiter-btn:hover:before {
-  left: 100% !important;
+.jupiter-btn:focus-visible {
+  outline: 2px solid hsl(var(--ring)) !important;
+  outline-offset: 2px !important;
 }
 
 .jupiter-btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
 }
 
 .jupiter-btn-primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4) !important;
+  background: hsl(var(--primary) / 0.9) !important;
 }
 
 .jupiter-btn-secondary {
-  background: #ffffff !important;
-  color: #374151 !important;
-  border: 1px solid #e5e7eb !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  background: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
 }
 
 .jupiter-btn-secondary:hover {
-  background: #f9fafb !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
 }
 
 /* === LOADING STATES === */
@@ -588,7 +606,7 @@
 .jupiter-suggestion {
   background: #f9fafb !important;
   border: 1px solid #f3f4f6 !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
   padding: 16px !important;
   margin-top: 16px !important;
 }
@@ -605,7 +623,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: #ffffff !important;
   padding: 4px 10px !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
   font-size: 12px !important;
   font-weight: 600 !important;
 }
@@ -614,7 +632,7 @@
   color: #dc2626 !important;
   background: #fef2f2 !important;
   border: 1px solid #fecaca !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   padding: 12px 16px !important;
   font-size: 14px !important;
   text-align: center !important;
@@ -696,7 +714,7 @@
   padding: 8px 16px !important;
   background: rgba(255, 255, 255, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   color: #ffffff !important;
   font-size: 14px !important;
   font-weight: 500 !important;
@@ -754,7 +772,7 @@
   z-index: 2147483644 !important;
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
   padding: 12px 16px !important;
   cursor: pointer !important;
@@ -799,7 +817,7 @@
   z-index: 2147483647 !important;
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius) !important;
   padding: 16px 20px !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
@@ -851,12 +869,12 @@
 
 .jupiter-analysis-container::-webkit-scrollbar-track {
   background: #f1f5f9 !important;
-  border-radius: 3px !important;
+  border-radius: var(--radius) !important;
 }
 
 .jupiter-analysis-container::-webkit-scrollbar-thumb {
   background: #cbd5e1 !important;
-  border-radius: 3px !important;
+  border-radius: var(--radius) !important;
 }
 
 .jupiter-analysis-container::-webkit-scrollbar-thumb:hover {
@@ -968,7 +986,7 @@
   width: 350px !important;
   max-height: 500px !important;
   background: #ffffff !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius) !important;
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.15),
     0 10px 20px rgba(0, 0, 0, 0.1),
@@ -1049,7 +1067,7 @@
 .jupiter-detected-text {
   background: #f8f9fa !important;
   padding: 12px !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   border-left: 3px solid #00d4ff !important;
   font-size: 13px !important;
   line-height: 1.4 !important;
@@ -1069,7 +1087,7 @@
   gap: 8px !important;
   padding: 8px 12px !important;
   background: #f0f9ff !important;
-  border-radius: 6px !important;
+  border-radius: var(--radius) !important;
   border: 1px solid #e0f2fe !important;
 }
 
@@ -1077,7 +1095,7 @@
   background: #00d4ff !important;
   color: white !important;
   padding: 2px 8px !important;
-  border-radius: 4px !important;
+  border-radius: var(--radius) !important;
   font-size: 11px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
@@ -1100,7 +1118,7 @@
   align-items: center !important;
   gap: 8px !important;
   padding: 12px !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   font-weight: 600 !important;
 }
 
@@ -1132,7 +1150,7 @@
 
 .jupiter-recommendation {
   padding: 12px !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
   font-size: 13px !important;
   line-height: 1.4 !important;
 }
@@ -1164,7 +1182,7 @@
 
 .jupiter-btn {
   padding: 8px 16px !important;
-  border-radius: 6px !important;
+  border-radius: var(--radius) !important;
   border: none !important;
   font-size: 13px !important;
   font-weight: 600 !important;
@@ -1181,3 +1199,4 @@
   background: #0099cc !important;
   transform: translateY(-1px) !important;
 }
+

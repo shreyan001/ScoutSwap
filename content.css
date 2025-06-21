@@ -1,0 +1,1188 @@
+/* Import Geist font */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 9% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .jupiter-overlay {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    background: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+}
+
+.jupiter-overlay-content, .jupiter-sentiment-analysis, .jupiter-sentiment-badge, .jupiter-btn-icon, .jupiter-header, .jupiter-analysis-container, .jupiter-results-container, .jupiter-loading-state, .jupiter-progress-bar, .jupiter-progress-fill, .jupiter-header-actions, .jupiter-logo, .jupiter-logo-icon, .jupiter-overlay-backdrop, .jupiter-sentiment-header, .jupiter-confidence-bar, .jupiter-loading-text, .jupiter-loading-primary, .jupiter-loading-secondary, .jupiter-activity-list, .jupiter-activity-empty, .jupiter-btn, .jupiter-btn-icon, .jupiter-section, .jupiter-setting, .jupiter-setting-label, .jupiter-feature, .jupiter-feature-icon, .jupiter-feature-content, .jupiter-feature-title, .jupiter-feature-desc {
+    border-radius: var(--radius) !important;
+}
+
+.jupiter-overlay-content, .jupiter-sentiment-analysis, .jupiter-btn-icon, .jupiter-header, .jupiter-analysis-container, .jupiter-results-container, .jupiter-loading-state {
+    background: hsl(var(--card)) !important;
+    color: hsl(var(--foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+}
+
+/* === MAIN OVERLAY === */
+.jupiter-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483647 !important;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  pointer-events: none !important;
+  animation: jupiterOverlayFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.jupiter-overlay-backdrop {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  pointer-events: all !important;
+}
+
+.jupiter-overlay-content {
+  position: absolute !important;
+  width: 420px !important;
+  max-height: 600px !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  overflow: hidden !important;
+  pointer-events: all !important;
+  animation: jupiterContentSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: center !important;
+}
+
+@keyframes jupiterOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes jupiterContentSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.jupiter-overlay-closing {
+  animation: jupiterOverlayFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+.jupiter-overlay-closing .jupiter-overlay-content {
+  animation: jupiterContentSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes jupiterOverlayFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes jupiterContentSlideOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+}
+
+/* === HEADER === */
+.jupiter-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+}
+
+.jupiter-logo {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: hsl(var(--primary)) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.jupiter-logo-icon {
+  font-size: 20px !important;
+  color: hsl(var(--primary)) !important;
+}
+
+@keyframes jupiterLogoRotate {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+.jupiter-header-actions {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.jupiter-btn-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: var(--radius) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: none !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.jupiter-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.05) !important;
+}
+
+.jupiter-btn-icon:active {
+  transform: scale(0.95) !important;
+}
+
+/* === ANALYSIS CONTAINER === */
+.jupiter-analysis-container {
+  padding: 24px !important;
+  min-height: 200px !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+}
+
+/* === LOADING STATE === */
+.jupiter-loading-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px 20px !important;
+  text-align: center !important;
+}
+
+.jupiter-loading-spinner {
+  width: 48px !important;
+  height: 48px !important;
+  border: 4px solid #f3f4f6 !important;  border-top: 4px solid hsl(var(--primary)) !important;
+  border-radius: var(--radius) !important;
+  animation: jupiterSpin 1s linear infinite !important;
+  margin-bottom: 20px !important;
+}
+
+@keyframes jupiterSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.jupiter-loading-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.jupiter-loading-primary {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+.jupiter-loading-secondary {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+}
+
+/* === RESULTS CONTAINER === */
+.jupiter-results-container {
+  animation: jupiterResultsFadeIn 0.4s ease-out !important;
+}
+
+@keyframes jupiterResultsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === SENTIMENT ANALYSIS === */
+.jupiter-sentiment-analysis {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+.jupiter-sentiment-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 16px !important;
+}
+
+.jupiter-sentiment-header h3 {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+.jupiter-sentiment-badge {
+  padding: 8px 16px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.jupiter-sentiment-positive {
+  background: hsl(142.1 76.2% 36.3%) !important;
+  color: hsl(120 100% 98%) !important;
+  border: 1px solid hsl(142.1 76.2% 45%) !important;
+}
+
+.jupiter-sentiment-negative {
+  background: hsl(0 84.2% 60.2%) !important;
+  color: hsl(0 0% 98%) !important;
+  border: 1px solid hsl(0 84.2% 65%) !important;
+}
+
+.jupiter-sentiment-neutral {
+  background: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.jupiter-confidence-bar {
+  margin-bottom: 12px !important;
+}
+
+.jupiter-confidence-bar span {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #4b5563 !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+.jupiter-progress-bar {
+  width: 100% !important;
+  height: 8px !important;
+  background: #e5e7eb !important;
+  border-radius: var(--radius) !important;
+  overflow: hidden !important;
+}
+
+.jupiter-progress-fill {
+  height: 100% !important;  background: hsl(var(--primary)) !important;
+  border-radius: var(--radius) !important;
+  transition: width 0.8s ease-out !important;
+  animation: jupiterProgressFill 0.8s ease-out !important;
+}
+
+@keyframes jupiterProgressFill {
+  from {
+    width: 0%;
+  }
+}
+
+.jupiter-sentiment-reasoning {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #4b5563 !important;
+  margin: 0 !important;
+  font-style: italic !important;
+}
+
+/* === TOKEN CARDS === */
+.jupiter-tokens-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.jupiter-token-card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: var(--radius) !important;
+  padding: 20px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.jupiter-token-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;  right: 0 !important;
+  height: 3px !important;
+  background: hsl(var(--primary)) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.jupiter-token-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+  border-color: #d1d5db !important;
+}
+
+.jupiter-token-card:hover::before {
+  opacity: 1 !important;
+}
+
+.jupiter-token-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 16px !important;
+}
+
+.jupiter-token-header h4 {
+  margin: 0 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;  color: #1f2937 !important;
+  background: hsl(var(--primary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.jupiter-token-actions {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.jupiter-btn-sm {
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid #e5e7eb !important;
+  background: #ffffff !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.jupiter-btn-sm:hover {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  transform: translateY(-1px) !important;
+}
+
+/* === TOKEN DATA === */
+.jupiter-token-info {
+  animation: jupiterTokenDataFadeIn 0.4s ease-out !important;
+}
+
+@keyframes jupiterTokenDataFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jupiter-price-display {
+  text-align: center !important;
+  margin-bottom: 20px !important;  padding: 20px !important;
+  background: hsl(var(--card)) !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.jupiter-price-value {
+  display: block !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  margin-bottom: 4px !important;  background: hsl(var(--primary)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.jupiter-price-label {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+}
+
+.jupiter-token-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+.jupiter-detail-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  background: #f9fafb !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid #f3f4f6 !important;
+}
+
+.jupiter-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+}
+
+.jupiter-value {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+.jupiter-address {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace !important;
+  background: #f3f4f6 !important;
+  padding: 4px 8px !important;
+  border-radius: var(--radius) !important;
+  font-size: 12px !important;
+}
+
+/* === BUTTONS === */
+.jupiter-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  border: 1px solid transparent !important;
+  padding: 8px 12px !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+  white-space: nowrap !important;
+}
+
+.jupiter-btn:hover {
+  opacity: 0.9 !important;
+}
+
+.jupiter-btn:focus-visible {
+  outline: 2px solid hsl(var(--ring)) !important;
+  outline-offset: 2px !important;
+}
+
+.jupiter-btn-primary {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.jupiter-btn-primary:hover {
+  background: hsl(var(--primary) / 0.9) !important;
+}
+
+.jupiter-btn-secondary {
+  background: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.jupiter-btn-secondary:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+/* === LOADING STATES === */
+.jupiter-token-loading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  padding: 20px !important;
+  color: #6b7280 !important;
+  font-size: 14px !important;
+}
+
+.jupiter-mini-spinner {
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid #f3f4f6 !important;  border-top: 2px solid hsl(var(--primary)) !important;
+  border-radius: var(--radius) !important;
+  animation: jupiterSpin 1s linear infinite !important;
+}
+
+/* === ERROR STATES === */
+.jupiter-error-state,
+.jupiter-no-results {
+  text-align: center !important;
+  padding: 40px 20px !important;
+}
+
+.jupiter-error-icon,
+.jupiter-no-results-icon {
+  font-size: 48px !important;
+  margin-bottom: 16px !important;
+  display: block !important;
+}
+
+.jupiter-error-state h3,
+.jupiter-no-results h3 {
+  margin: 0 0 12px 0 !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+.jupiter-error-state p,
+.jupiter-no-results p {
+  margin: 0 0 20px 0 !important;
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  line-height: 1.5 !important;
+}
+
+.jupiter-suggestion {
+  background: #f9fafb !important;
+  border: 1px solid #f3f4f6 !important;
+  border-radius: var(--radius) !important;
+  padding: 16px !important;
+  margin-top: 16px !important;
+}
+
+.jupiter-token-examples {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  margin-top: 12px !important;
+}
+
+.jupiter-token-tag {  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  padding: 4px 10px !important;
+  border-radius: var(--radius) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.jupiter-error-message {
+  color: #dc2626 !important;
+  background: #fef2f2 !important;
+  border: 1px solid #fecaca !important;
+  border-radius: var(--radius) !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  text-align: center !important;
+}
+
+/* === FOOTER === */
+.jupiter-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 24px !important;
+  background: #f9fafb !important;
+  border-top: 1px solid #f3f4f6 !important;
+  font-size: 12px !important;
+  color: #6b7280 !important;
+}
+
+/* === LENS MODE === */
+.jupiter-lens-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 2147483646 !important;
+  background: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: hsl(var(--foreground)) !important;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  animation: jupiterLensSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes jupiterLensSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.jupiter-lens-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 24px !important;
+}
+
+.jupiter-lens-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.jupiter-lens-icon {
+  font-size: 24px !important;
+  animation: jupiterLensPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes jupiterLensPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.jupiter-lens-controls {
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.jupiter-lens-btn {
+  padding: 8px 16px !important;
+  background: hsl(var(--secondary)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.jupiter-lens-btn:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+  transform: translateY(-1px) !important;
+}
+
+.jupiter-lens-instructions {
+  text-align: center !important;
+  padding: 12px 24px !important;
+  font-size: 14px !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-top: 1px solid hsl(var(--border)) !important;
+}
+
+/* === SCAN LINE EFFECT === */
+.jupiter-scan-line {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent) !important;
+  z-index: 2147483645 !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 20px hsl(var(--primary)) !important;
+}
+
+/* === HIGHLIGHTED ELEMENTS === */
+.jupiter-highlighted {
+  outline: 3px solid #00d4ff !important;
+  outline-offset: 2px !important;
+  background: rgba(0, 212, 255, 0.1) !important;
+  animation: jupiterHighlight 2s ease-out forwards !important;
+}
+
+@keyframes jupiterHighlight {
+  0% {
+    outline-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.2);
+  }
+  100% {
+    outline-color: transparent;
+    background: transparent;
+  }
+}
+
+/* === QUICK HINT === */
+.jupiter-quick-hint {
+  position: fixed !important;
+  z-index: 2147483644 !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  animation: jupiterHintFadeIn 0.3s ease-out !important;
+  transition: all 0.2s ease !important;
+}
+
+.jupiter-quick-hint:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+}
+
+@keyframes jupiterHintFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.jupiter-hint-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: #374151 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.jupiter-hint-icon {
+  font-size: 16px !important;
+}
+
+/* === NOTIFICATIONS === */
+.jupiter-notification {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 2147483647 !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: var(--radius) !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  max-width: 320px !important;
+  opacity: 0 !important;
+  transform: translateX(100%) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.jupiter-notification-show {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.jupiter-notification-success {
+  border-left: 4px solid #10b981 !important;
+}
+
+.jupiter-notification-error {
+  border-left: 4px solid #ef4444 !important;
+}
+
+.jupiter-notification-warning {
+  border-left: 4px solid #f59e0b !important;
+}
+
+.jupiter-notification-info {
+  border-left: 4px solid #3b82f6 !important;
+}
+
+/* === MINIMIZED STATE === */
+.jupiter-overlay-minimized .jupiter-overlay-content {
+  transform: scale(0.1) !important;
+  opacity: 0.8 !important;
+  pointer-events: none !important;
+}
+
+.jupiter-overlay-minimized .jupiter-overlay-backdrop {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* === SCROLLBAR === */
+.jupiter-analysis-container::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.jupiter-analysis-container::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+  border-radius: var(--radius) !important;
+}
+
+.jupiter-analysis-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: var(--radius) !important;
+}
+
+.jupiter-analysis-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 480px) {
+  .jupiter-overlay-content {
+    width: calc(100vw - 32px) !important;
+    max-width: none !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+  
+  .jupiter-header {
+    padding: 16px 20px 12px 20px !important;
+  }
+  
+  .jupiter-logo {
+    font-size: 16px !important;
+  }
+  
+  .jupiter-analysis-container {
+    padding: 20px !important;
+  }
+  
+  .jupiter-sentiment-analysis {
+    padding: 16px !important;
+  }
+  
+  .jupiter-token-card {
+    padding: 16px !important;
+  }
+  
+  .jupiter-token-actions {
+    flex-direction: column !important;
+  }
+  
+  .jupiter-lens-header {
+    padding: 12px 16px !important;
+  }
+  
+  .jupiter-lens-title {
+    font-size: 16px !important;
+  }
+  
+  .jupiter-lens-controls {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-height: 600px) {
+  .jupiter-overlay-content {
+    max-height: calc(100vh - 80px) !important;
+  }
+  
+  .jupiter-analysis-container {
+    max-height: calc(100vh - 200px) !important;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === DARK MODE SUPPORT === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/* === OCR RESULTS OVERLAY === */
+.jupiter-ocr-results {
+  position: fixed !important;
+  width: 350px !important;
+  max-height: 500px !important;  background: hsl(var(--card)) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  z-index: 10001 !important;
+  animation: jupiterOCRSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+}
+
+@keyframes jupiterOCRSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.jupiter-ocr-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+  color: white !important;
+}
+
+.jupiter-ocr-header h3 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.jupiter-close-btn {  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: white !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease !important;
+}
+
+.jupiter-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.jupiter-ocr-content {
+  padding: 20px !important;
+  max-height: 380px !important;
+  overflow-y: auto !important;
+}
+
+.jupiter-ocr-section {
+  margin-bottom: 16px !important;
+}
+
+.jupiter-ocr-section:last-child {
+  margin-bottom: 0 !important;
+}
+
+.jupiter-ocr-section h4 {
+  margin: 0 0 8px 0 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+}
+
+.jupiter-detected-text {
+  background: #f8f9fa !important;
+  padding: 12px !important;
+  border-radius: var(--radius) !important;
+  border-left: 3px solid #00d4ff !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  color: #555 !important;
+  margin: 0 !important;
+}
+
+.jupiter-trading-signals {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.jupiter-signal {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  background: #f0f9ff !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid #e0f2fe !important;
+}
+
+.jupiter-signal-type {
+  background: #00d4ff !important;
+  color: white !important;
+  padding: 2px 8px !important;
+  border-radius: var(--radius) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+.jupiter-signal-value {
+  font-weight: 600 !important;
+  color: #333 !important;
+  font-size: 13px !important;
+}
+
+.jupiter-confidence {
+  font-size: 11px !important;
+  color: #666 !important;
+  margin-left: auto !important;
+}
+
+.jupiter-sentiment {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px !important;
+  border-radius: var(--radius) !important;
+  font-weight: 600 !important;
+}
+
+.jupiter-sentiment.bullish {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+.jupiter-sentiment.bearish {
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fecaca !important;
+}
+
+.jupiter-sentiment.neutral {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.jupiter-sentiment-icon {
+  font-size: 18px !important;
+}
+
+.jupiter-sentiment-text {
+  font-size: 13px !important;
+}
+
+.jupiter-recommendation {
+  padding: 12px !important;
+  border-radius: var(--radius) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.jupiter-recommendation.low {
+  background: #f0f9ff !important;
+  border: 1px solid #bae6fd !important;
+  color: #0c4a6e !important;
+}
+
+.jupiter-recommendation.moderate {
+  background: #fefce8 !important;
+  border: 1px solid #fde047 !important;
+  color: #713f12 !important;
+}
+
+.jupiter-recommendation.high {
+  background: #fef2f2 !important;
+  border: 1px solid #fecaca !important;
+  color: #991b1b !important;
+}
+
+.jupiter-ocr-footer {
+  padding: 16px 20px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+.jupiter-btn {
+  padding: 8px 16px !important;
+  border-radius: var(--radius) !important;
+  border: none !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.jupiter-btn-primary {
+  background: #00d4ff !important;
+  color: white !important;
+}
+
+.jupiter-btn-primary:hover {
+  background: #0099cc !important;
+  transform: translateY(-1px) !important;
+}
