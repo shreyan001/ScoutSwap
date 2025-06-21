@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter Social Trader - Test Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4299e1;
+        }
+        .token-mention {
+            background: #e6fffa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        .highlight {
+            background: #fef5e7;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px dashed #ed8936;
+        }
+        .instructions {
+            background: #e6f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .crypto-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        .trading-scenario {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #68d391;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Jupiter Social Trader - Test Page</h1>
+        
+        <div class="instructions">
+            <h3>📋 How to Test the Extension</h3>
+            <ol>
+                <li><strong>Load the Extension:</strong> Go to chrome://extensions/, enable Developer Mode, and load the extension folder</li>
+                <li><strong>Right-click Analysis:</strong> Highlight any crypto text below and right-click to analyze</li>
+                <li><strong>Lens Mode:</strong> Press Ctrl+Shift+L to activate lens mode and hover over content</li>
+                <li><strong>Popup Interface:</strong> Click the extension icon to open the popup interface</li>
+                <li><strong>Keyboard Shortcuts:</strong> Try Ctrl+Shift+A to analyze selected text</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 Test Scenario 1: Basic Token Mentions</h3>
+            <div class="crypto-text">
+                Just bought some <span class="token-mention">$SOL</span> at $95.50! 
+                Thinking about swapping for <span class="token-mention">$BONK</span> or <span class="token-mention">$JUP</span>. 
+                What do you think about <span class="token-mention">$USDC</span> pairs?
+            </div>
+            <p><em>👆 Try highlighting this text and right-clicking to analyze token mentions!</em></p>
+        </div>
+
+        <div class="test-section">
+            <h3>📈 Test Scenario 2: Trading Discussion</h3>
+            <div class="trading-scenario">
+                <p>🔥 Alpha thread: <span class="token-mention">$RENDER</span> looking bullish! 
+                Just saw a whale move 500K <span class="token-mention">$USDC</span> into 
+                <span class="token-mention">$RAY</span> on Jupiter. 
+                Might be time to check <span class="token-mention">$ORCA</span> pools too.</p>
+                
+                <p>My strategy: DCA into <span class="token-mention">$JTO</span> and 
+                <span class="token-mention">$PYTH</span> while they're down. 
+                Using Jupiter aggregator for best prices!</p>
+            </div>
+            <p><em>👆 Perfect for testing sentiment analysis and multi-token detection!</em></p>
+        </div>
+
+        <div class="test-section">
+            <h3>🚨 Test Scenario 3: Market Updates</h3>
+            <div class="highlight">
+                BREAKING: <span class="token-mention">$SOL</span> breaks $100! 
+                <span class="token-mention">$BONK</span> up 25% today. 
+                <span class="token-mention">$WIF</span> and <span class="token-mention">$POPCAT</span> 
+                following the meme coin trend. 
+                Time to check Jupiter for swap opportunities?
+            </div>
+            <p><em>👆 Great for testing price integration and market sentiment!</em></p>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 Test Scenario 4: OCR/Lens Testing</h3>
+            <div style="background: #2d3748; color: white; padding: 20px; border-radius: 10px; font-family: monospace;">
+                📊 PORTFOLIO UPDATE 📊<br>
+                SOL: 12.5 @ $98.00<br>
+                JUP: 1,250 @ $0.85<br>
+                BONK: 50M @ $0.000018<br>
+                USDC: 2,500 (stable)<br><br>
+                🎯 Next moves: Swap 5 SOL → JUP<br>
+                📅 Date: 2024-01-15<br>
+                🏆 Total Value: ~$3,847
+            </div>
+            <p><em>👆 Use lens mode (Ctrl+Shift+L) to extract and analyze this data!</em></p>
+        </div>
+
+        <div class="test-section">
+            <h3>💡 Test Features</h3>
+            <ul>
+                <li><strong>Context Menu:</strong> Right-click on any crypto text</li>
+                <li><strong>Lens Mode:</strong> Hover and click with lens active</li>
+                <li><strong>Popup Interface:</strong> Click extension icon</li>
+                <li><strong>Keyboard Shortcuts:</strong> Try all shortcuts listed</li>
+                <li><strong>Multi-platform:</strong> Test on Twitter, Discord, Reddit</li>
+                <li><strong>Responsive Design:</strong> Resize window to test</li>
+                <li><strong>Error Handling:</strong> Try invalid tokens</li>
+            </ul>
+        </div>
+
+        <div class="instructions">
+            <h3>🎮 Advanced Testing</h3>
+            <p>For comprehensive testing:</p>
+            <ul>
+                <li>Open browser console (F12) to see debug messages</li>
+                <li>Test on actual social media platforms</li>
+                <li>Try different screen sizes and zoom levels</li>
+                <li>Test with adblockers and privacy extensions</li>
+                <li>Verify all animations and transitions work smoothly</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h3>🌟 Extension Successfully Overhauled!</h3>
+            <p>✅ Modern UI/UX with Google Lens-style overlay<br>
+            ✅ Universal platform support (Twitter, Discord, Reddit, etc.)<br>
+            ✅ Jupiter API v6 integration<br>
+            ✅ OCR and lens mode capabilities<br>
+            ✅ Fixed all rattling and positioning issues<br>
+            ✅ Responsive design and accessibility<br>
+            ✅ Robust error handling and notifications</p>
+        </div>
+    </div>
+</body>
+</html>

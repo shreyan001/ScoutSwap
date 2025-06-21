@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter Social Trader</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Header -->
+        <div class="popup-header">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Jupiter Social Trader</span>
+            </div>
+            <span class="version">v2.0</span>
+        </div>
+
+        <!-- Content -->
+        <div class="popup-content">
+            <!-- Wallet Connection Section -->
+            <div class="wallet-section">
+                <div id="wallet-disconnected" class="wallet-status">
+                    <div class="wallet-icon">👛</div>
+                    <h3>Connect Your Wallet</h3>
+                    <p>Connect your Solana wallet to get started</p>
+                    <button id="connect-wallet-btn" class="btn btn-primary">
+                        <span class="btn-icon">🔗</span>
+                        Connect Wallet
+                    </button>
+                </div>
+                
+                <div id="wallet-connected" class="wallet-status" style="display: none;">
+                    <div class="wallet-icon">✅</div>
+                    <h3>Wallet Connected</h3>
+                    <div class="wallet-info">
+                        <div class="wallet-address">
+                            <strong>Address:</strong>
+                            <span id="wallet-address-text">Loading...</span>
+                        </div>
+                        <div class="wallet-balance">
+                            <strong>Balance:</strong>
+                            <span id="sol-balance">0.00</span> SOL
+                        </div>
+                    </div>
+                    <div class="wallet-actions">
+                        <button id="refresh-balance-btn" class="btn btn-secondary">
+                            <span class="btn-icon">🔄</span>
+                            Refresh
+                        </button>
+                        <button id="disconnect-wallet-btn" class="btn btn-secondary">
+                            <span class="btn-icon">🔌</span>
+                            Disconnect
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Section -->
+            <div class="status-section">
+                <div class="status-item">
+                    <div class="status-label">Status:</div>
+                    <div id="extension-status" class="status-value">Ready</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Last Activity:</div>
+                    <div id="last-activity" class="status-value">None</div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions-section">
+                <h3>📋 How to Use</h3>
+                <div class="instructions">
+                    <div class="instruction">
+                        <span class="step">1</span>
+                        <span class="text">Connect your Phantom or Solflare wallet</span>
+                    </div>
+                    <div class="instruction">
+                        <span class="step">2</span>
+                        <span class="text">Visit crypto social platforms</span>
+                    </div>
+                    <div class="instruction">
+                        <span class="step">3</span>
+                        <span class="text">Right-click on token mentions</span>
+                    </div>
+                    <div class="instruction">
+                        <span class="step">4</span>
+                        <span class="text">Get Jupiter price data and insights</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="popup-footer">
+            <div class="powered-by">
+                Powered by <strong>Jupiter Exchange</strong>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

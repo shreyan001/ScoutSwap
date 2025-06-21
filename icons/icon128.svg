@@ -1,0 +1,47 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0099cc;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+    
+    <!-- Background circle with shadow -->
+    <circle cx="64" cy="64" r="60" fill="url(#grad1)" stroke="#ffffff" stroke-width="4" filter="url(#shadow)"/>
+    
+    <!-- Rocket icon -->
+    <g transform="translate(48, 32)">
+        <!-- Main rocket body -->
+        <path d="M16 4 L16 0 L20 0 L20 4 L24 8 L24 48 L20 52 L16 52 L12 48 L12 8 Z" fill="#000000" stroke="#333" stroke-width="1"/>
+        
+        <!-- Rocket flames -->
+        <path d="M12 52 L14 60 L16 54 L18 60 L20 54 L22 60 L24 52" fill="#ff4444" stroke="#cc0000" stroke-width="1"/>
+        <path d="M14 60 L16 66 L18 60 L20 66 L22 60" fill="#ff6666"/>
+        
+        <!-- Rocket window -->
+        <circle cx="18" cy="20" r="6" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+        <circle cx="18" cy="20" r="4" fill="#87ceeb"/>
+        
+        <!-- Rocket details -->
+        <rect x="15" y="30" width="6" height="2" fill="#333333"/>
+        <rect x="15" y="34" width="6" height="2" fill="#333333"/>
+        <rect x="15" y="38" width="6" height="2" fill="#333333"/>
+        
+        <!-- Side fins -->
+        <path d="M12 24 L4 32 L4 40 L12 32 Z" fill="#000000" stroke="#333" stroke-width="1"/>
+        <path d="M24 24 L32 32 L32 40 L24 32 Z" fill="#000000" stroke="#333" stroke-width="1"/>
+        
+        <!-- Rocket tip -->
+        <path d="M16 0 L18 -8 L20 0 Z" fill="#ffff00" stroke="#cccc00" stroke-width="1"/>
+    </g>
+    
+    <!-- Decorative stars -->
+    <g fill="#ffffff" opacity="0.7">
+        <polygon points="20,20 22,24 26,24 23,27 24,31 20,29 16,31 17,27 14,24 18,24" transform="scale(0.3)"/>
+        <polygon points="100,30 102,34 106,34 103,37 104,41 100,39 96,41 97,37 94,34 98,34" transform="scale(0.3)"/>
+        <polygon points="110,80 112,84 116,84 113,87 114,91 110,89 106,91 107,87 104,84 108,84" transform="scale(0.3)"/>
+    </g>
+</svg>

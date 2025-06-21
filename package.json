@@ -1,0 +1,87 @@
+{
+  "name": "jupiter-social-trader",
+  "version": "1.0.0",
+  "description": "AI-powered Universal DeFi Social Trading Assistant Chrome Extension using Jupiter API on Solana - Works on all social platforms",
+  "main": "background.js",
+  "scripts": {
+    "test": "node test.js",
+    "build": "echo 'Building Chrome extension...' and echo 'Files ready for Chrome extension loading'",
+    "dev": "echo 'Development mode - Load unpacked extension in Chrome'",
+    "lint": "echo 'Linting JavaScript files...'",
+    "validate": "echo 'Validating manifest.json and extension structure...'"
+  },  "keywords": [
+    "chrome-extension",
+    "defi",
+    "solana",
+    "jupiter",
+    "trading",
+    "cryptocurrency",
+    "ai",
+    "social-trading",
+    "universal",
+    "ocr",
+    "lens",
+    "sentiment-analysis",
+    "twitter",
+    "discord",
+    "reddit",
+    "telegram"
+  ],
+  "author": "Jupiter Social Trader Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/jupiter-social-trader"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/jupiter-social-trader/issues"
+  },
+  "homepage": "https://github.com/your-username/jupiter-social-trader#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  "manifest": {
+    "version": 3,
+    "permissions": [
+      "contextMenus",
+      "activeTab",
+      "storage",
+      "scripting",
+      "tabs"
+    ],    "host_permissions": [
+      "https://token.jup.ag/*",
+      "https://price.jup.ag/*",
+      "https://quote-api.jup.ag/*",
+      "*://*.twitter.com/*",
+      "*://*.x.com/*",
+      "*://*.discord.com/*",
+      "*://*.reddit.com/*",
+      "*://*.telegram.org/*",
+      "*://*.t.me/*"
+    ]
+  },
+  "chrome_extension": {
+    "files": [
+      "manifest.json",
+      "background.js",
+      "content.js",
+      "content.css",
+      "popup.html",
+      "popup.js",
+      "popup.css",
+      "icons/"
+    ],
+    "entry_points": {
+      "background": "background.js",
+      "content_script": "content.js",
+      "popup": "popup.html"
+    }
+  }
+}
