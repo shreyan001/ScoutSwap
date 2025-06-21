@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter Social Trader</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Header -->
+        <div class="popup-header">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">Jupiter Social Trader</span>
+            </div>
+            <span class="version">v2.0</span>
+        </div>
+
+        <!-- Content -->
+        <div class="popup-content">
+            <!-- Welcome Section -->
+            <div class="section" id="welcomeSection">
+                <div class="welcome-icon">🌟</div>
+                <h2>Welcome to Jupiter Social Trader</h2>
+                <p>AI-powered DeFi social trading assistant for Solana</p>
+                
+                <!-- Wallet Connection -->
+                <div class="wallet-section">
+                    <div id="wallet-status" class="wallet-disconnected">
+                        <div class="wallet-info">
+                            <h3>Connect Your Wallet</h3>
+                            <p>Connect your Solana wallet to start trading</p>
+                        </div>
+                        <button id="connect-wallet-btn" class="btn btn-primary">
+                            <span class="btn-icon">🔗</span>
+                            Connect Wallet
+                        </button>
+                    </div>
+                    
+                    <div id="wallet-connected" class="wallet-connected" style="display: none;">
+                        <div class="wallet-info">
+                            <h3>Wallet Connected</h3>
+                            <p id="wallet-address">Loading...</p>
+                            <p class="wallet-balance">Balance: <span id="sol-balance">0.00</span> SOL</p>
+                        </div>
+                        <button id="disconnect-wallet-btn" class="btn btn-secondary">
+                            <span class="btn-icon">🔌</span>
+                            Disconnect
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="tokensAnalyzed">0</div>
+                        <div class="stat-label">Tokens Analyzed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="successRate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="section">
+                <h3>� How to Use</h3>
+                <div class="instructions">
+                    <div class="instruction">
+                        <div class="step">1</div>
+                        <div class="text">Connect your Phantom, Solflare, or Sollet wallet</div>
+                    </div>
+                    <div class="instruction">
+                        <div class="step">2</div>
+                        <div class="text">Visit crypto social platforms (Twitter, Discord, Reddit)</div>
+                    </div>
+                    <div class="instruction">
+                        <div class="step">3</div>
+                        <div class="text">Right-click on token mentions and select "Analyze with Jupiter AI"</div>
+                    </div>
+                    <div class="instruction">
+                        <div class="step">4</div>
+                        <div class="text">Get AI-powered trading insights and Jupiter price data</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="section">
+                <h3>⚡ Features</h3>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-content">
+                            <div class="feature-title">AI Analysis</div>
+                            <div class="feature-desc">Advanced sentiment analysis and token insights</div>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <div class="feature-content">
+                            <div class="feature-title">Jupiter Integration</div>
+                            <div class="feature-desc">Real-time prices and trading through Jupiter DEX</div>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-content">
+                            <div class="feature-title">OCR Scanner</div>
+                            <div class="feature-desc">Scan crypto content from images and charts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="section">
+                <h3>🎯 Quick Actions</h3>
+                <div class="actions">
+                    <button class="btn btn-primary" id="testOCR">
+                        <span class="btn-icon">🧪</span>
+                        Test OCR
+                    </button>
+                    <button class="btn btn-secondary" id="scanCurrentPage">
+                        <span class="btn-icon">�</span>
+                        Scan Page
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="section">
+                <h3>⚙️ Settings</h3>
+                <div class="settings">
+                    <div class="setting">
+                        <label class="setting-label">
+                            <input type="checkbox" id="autoAnalysis" checked>
+                            Auto-analyze selected text
+                        </label>
+                    </div>
+                    <div class="setting">
+                        <label class="setting-label">
+                            Risk Level:
+                            <select id="riskLevel">
+                                <option value="conservative">Conservative</option>
+                                <option value="moderate" selected>Moderate</option>
+                                <option value="aggressive">Aggressive</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="setting">
+                        <label class="setting-label">
+                            Default Slippage:
+                            <select id="defaultSlippage">
+                                <option value="25">0.25%</option>
+                                <option value="50" selected>0.50%</option>
+                                <option value="100">1.00%</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="section">
+                <h3>📊 Recent Activity</h3>
+                <div id="recentActivity" class="activity-list">
+                    <div class="activity-empty">
+                        <p>No recent activity. Start analyzing content to see your trading history!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="popup-footer">
+            <div class="links">
+                <a href="#" id="helpLink">Help</a>
+                <a href="#" id="feedbackLink">Feedback</a>
+                <a href="#" id="aboutLink">About</a>
+            </div>
+            <div class="powered-by">
+                Powered by <strong>Jupiter Exchange</strong>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>    <script src="popup.js"></script>
+</body>
+</html>
